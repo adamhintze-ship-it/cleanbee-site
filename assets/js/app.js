@@ -10,6 +10,15 @@
      Business data. These are the numbers the estimate is built from — change
      them here and both the wizard and the estimate panel follow.
      ---------------------------------------------------------------------- */
+  /* Where booking requests are sent.
+     Empty = nothing is transmitted; the wizard still confirms on screen, but
+     NOBODY RECEIVES THE BOOKING. Paste a form endpoint here to go live —
+     see "Turning on booking emails" in EDITING.md. */
+  var FORM_ENDPOINT = '';
+
+  /* The phone number shown if a booking fails to send. */
+  var FALLBACK_PHONE = '(801) 614-2233';
+
   var BASE_PRICE = 99; // a standard recurring clean, 2 bed / 1 bath, ≤1,200 sq ft
 
   var TYPES = [
@@ -440,6 +449,60 @@
     return false;
   }
 
+  /** Everything the office needs to act on the request. */
+  function bookingPayload() {
+    var p = price();
+    return {
+      name: state.name,
+      phone: state.tel,
+      email: state.email,
+      address: state.addr,
+      zip: state.zip,
+      service: state.type,
+      frequency: state.freq,
+      bedrooms: state.beds,
+      bathrooms: state.baths,
+      sqft: state.sqft,
+      addons: state.addons.join(', ') || 'None',
+      date: state.date,
+      arrival_window: state.time,
+      when: whenLine(),
+      estimate: p === null ? 'Custom quote' : '$' + p,
+      notes: state.notes,
+      submitted_at: new Date().toISOString()
+    };
+  }
+
+  function showConfirmation() {
+    state.submitted = true;
+    renderBooking();
+    window.scrollTo(0, 0);
+  }
+
+  function submitBooking() {
+    // No endpoint configured yet — confirm on screen without sending.
+    if (!FORM_ENDPOINT) { showConfirmation(); return; }
+
+    els.next.disabled = true;
+    els.next.textContent = 'Sending…';
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(bookingPayload())
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      showConfirmation();
+    }).catch(function () {
+      els.error.textContent = 'We couldn’t send that just now. Please call ' +
+        FALLBACK_PHONE + ' and we’ll book you in.';
+      els.error.hidden = false;
+    }).then(function () {
+      els.next.disabled = false;
+      els.next.textContent = state.step === 3 ? 'Confirm booking' : 'Continue';
+    });
+  }
+
   function wireBooking() {
     // steppers
     $$('[data-bump]', els.form).forEach(function (btn) {
@@ -479,12 +542,7 @@
         return;
       }
       if (!validateContact()) return;
-
-      /* Where a real backend goes: POST the booking, then show confirmation.
-         Until then the request is kept client-side. */
-      state.submitted = true;
-      renderBooking();
-      window.scrollTo(0, 0);
+      submitBooking();
     });
 
     els.rebook.addEventListener('click', function () {

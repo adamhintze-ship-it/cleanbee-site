@@ -6,6 +6,29 @@ County, Utah. Implemented from the `Clean Bee.dc.html` design canvas.
 Static HTML, CSS and vanilla JavaScript — no build step, no dependencies, no
 framework. Deploy it by copying the directory to any static host.
 
+> **Editing the site without touching code?** See **[EDITING.md](EDITING.md)** —
+> a plain-English guide to changing wording, swapping in photos, adjusting
+> prices and turning on booking emails, all from the browser.
+
+## Deploying to Vercel
+
+Import the repository at [vercel.com/new](https://vercel.com/new). There is
+nothing to configure — `vercel.json` already declares it as a static site with
+no build step, so accept the defaults and deploy.
+
+Every push to the production branch redeploys automatically, usually in under a
+minute.
+
+Two things worth knowing:
+
+- **Routing needs no rewrites.** Navigation is hash-based (`#/pricing`), so the
+  server only ever serves `index.html`. Deep links work on any static host with
+  zero configuration.
+- **Photos are cached for one hour, not a year.** `vercel.json` sets a short
+  revalidating cache on `assets/img/` deliberately: filenames are stable, so a
+  long cache would leave a swapped photo stale for weeks. The trade is a
+  negligible amount of extra bandwidth.
+
 ## Running it locally
 
 ```sh
@@ -59,18 +82,20 @@ estimate = round((base + rooms + sqft surcharge) × frequency multiplier) + add-
 Serviced ZIP codes live in the `ZIPS` array in the same file; step 1 confirms
 coverage as soon as a match is typed.
 
-### Wiring up a real backend
+### Delivering the bookings
 
-The wizard currently confirms client-side and does not transmit anything. The
-submit handler in `assets/js/app.js` marks the spot:
+The POST is wired but unaddressed. Set `FORM_ENDPOINT` at the top of
+`assets/js/app.js` to any endpoint that accepts a JSON body — Formspree,
+Web3Forms, a Vercel serverless function, your own API:
 
 ```js
-/* Where a real backend goes: POST the booking, then show confirmation. */
-state.submitted = true;
+var FORM_ENDPOINT = 'https://formspree.io/f/abcdwxyz';
 ```
 
-Replace that with a `fetch` to your booking endpoint, and show the confirmation
-view on success. `state` already holds every field the form collects.
+While it is empty the wizard confirms on screen and **sends nothing**, which is
+the current state. `bookingPayload()` builds the flat object that gets posted;
+a failed request surfaces the fallback phone number instead of falsely
+confirming.
 
 ## Notes on the port
 
