@@ -109,8 +109,13 @@ while making it a real site.
 - `<image-slot>` placeholders became `<img>` tags that fall back to a styled
   honeycomb placeholder when the file is absent, so photos drop in without code
   changes.
-- The prototype was a fixed desktop grid; the site is responsive down to 360px,
-  with a collapsing header nav.
+- Responsive follows the design's own strategy: intrinsic grids
+  (`auto-fit` + `minmax(min(100%, Npx), 1fr)`) and `clamp()` for type and
+  padding, so almost nothing needs a breakpoint. The single breakpoint is
+  900px, where the header swaps to the compact call/menu pair and the sticky
+  booking bar appears.
+- Section icons are inline SVG on honeycomb chips, matching the design; the
+  earlier emoji are gone.
 - Accessibility: skip link, landmarks, a real `<form>` with labelled fields,
   radio-group semantics with arrow-key support on the choice chips, visible focus
   rings, and `prefers-reduced-motion` handling.

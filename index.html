@@ -46,18 +46,33 @@
         </span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
-        <span class="nav-toggle__bars" aria-hidden="true"></span>
-      </button>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-wide">
+          <a class="nav-link" href="#/" data-nav="home">Home</a>
+          <a class="nav-link" href="#/services" data-nav="services">Services</a>
+          <a class="nav-link" href="#/pricing" data-nav="pricing">Pricing</a>
+          <a class="nav-link" href="#/about" data-nav="about">About</a>
+          <a class="nav-phone" href="tel:+18016142233" data-phone-link>(801) 614-2233</a>
+          <a class="btn btn--ink nav-cta" href="#/book" data-nav="book">Book a clean</a>
+        </div>
 
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a class="nav-link" href="#/" data-nav="home">Home</a>
-        <a class="nav-link" href="#/services" data-nav="services">Services</a>
-        <a class="nav-link" href="#/pricing" data-nav="pricing">Pricing</a>
-        <a class="nav-link" href="#/about" data-nav="about">About</a>
-        <a class="nav-phone" href="tel:+18016142233" data-phone-link>(801) 614-2233</a>
-        <a class="btn btn--ink nav-cta" href="#/book" data-nav="book">Book a clean</a>
+        <div class="nav-narrow">
+          <a class="nav-call" href="tel:+18016142233" aria-label="Call Clean Bee" data-phone-link>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z"/></svg>
+          </a>
+          <button class="nav-burger" type="button" id="nav-burger" aria-expanded="false" aria-controls="nav-drawer" aria-label="Menu">
+            <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+          </button>
+        </div>
       </nav>
+    </div>
+
+    <div class="nav-drawer" id="nav-drawer" hidden>
+      <a class="nav-drawer__link" href="#/" data-nav="home">Home</a>
+      <a class="nav-drawer__link" href="#/services" data-nav="services">Services</a>
+      <a class="nav-drawer__link" href="#/pricing" data-nav="pricing">Pricing</a>
+      <a class="nav-drawer__link" href="#/about" data-nav="about">About</a>
+      <a class="btn btn--gold nav-drawer__cta" href="#/book" data-nav="book">Book a clean</a>
     </div>
   </header>
 
@@ -83,7 +98,7 @@
             </div>
             <div>
               <div class="stars">★★★★★</div>
-              <div class="proof__note">4.9 average from 1,284 cleans</div>
+              <div class="proof__note">4.8 on Google · 214 reviews</div>
             </div>
           </div>
         </div>
@@ -103,10 +118,10 @@
 
     <section class="assurances">
       <div class="wrap assurances__grid">
-        <div class="assurance"><span class="assurance__icon" aria-hidden="true">🛡️</span><div><div class="assurance__title">Insured &amp; bonded</div><div class="assurance__note">Every cleaner, every visit</div></div></div>
-        <div class="assurance"><span class="assurance__icon" aria-hidden="true">🌿</span><div><div class="assurance__title">Eco-friendly products</div><div class="assurance__note">Safe for kids and pets</div></div></div>
-        <div class="assurance"><span class="assurance__icon" aria-hidden="true">↩️</span><div><div class="assurance__title">24-hour guarantee</div><div class="assurance__note">We re-clean it free</div></div></div>
-        <div class="assurance"><span class="assurance__icon" aria-hidden="true">🧾</span><div><div class="assurance__title">Flat, upfront pricing</div><div class="assurance__note">No surprises after</div></div></div>
+        <div class="assurance"><span class="hex-icon hex-icon--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.2 3 7.4 7 9 4-1.6 7-4.8 7-9V6Z"/></svg></span><div><div class="assurance__title">Insured &amp; bonded</div><div class="assurance__note">Every cleaner, every visit</div></div></div>
+        <div class="assurance"><span class="hex-icon hex-icon--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14Z"/><path d="M5 19 14.5 9.5"/></svg></span><div><div class="assurance__title">Eco-friendly products</div><div class="assurance__note">Safe for kids and pets</div></div></div>
+        <div class="assurance"><span class="hex-icon hex-icon--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 9H14a5 5 0 1 1 0 10H9"/><path d="M4.5 9 8 5.5M4.5 9 8 12.5"/></svg></span><div><div class="assurance__title">24-hour guarantee</div><div class="assurance__note">We re-clean it free</div></div></div>
+        <div class="assurance"><span class="hex-icon hex-icon--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-2.2-1.5-2 1.5-1.8-1.5-2 1.5-2-1.5L6 21Z"/><path d="M9 8h6M9 11.5h6"/></svg></span><div><div class="assurance__title">Flat, upfront pricing</div><div class="assurance__note">No surprises after</div></div></div>
       </div>
     </section>
 
@@ -114,56 +129,56 @@
       <div class="section__head">
         <div>
           <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>Services</p>
-          <h2 class="h2">What we <em>clean</em></h2>
+          <h2 class="h2">What we clean</h2>
         </div>
         <a class="link-arrow" href="#/services">All services →</a>
       </div>
 
       <div class="service-grid">
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">🏠</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg></span>
           <h3 class="service-card__title">Recurring home cleaning</h3>
           <p class="service-card__text">Weekly, biweekly or monthly visits that keep everything in order.</p>
           <div class="service-card__price">From $119</div>
         </article>
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">✨</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c.6 4 1.9 5.4 6 6-4.1.6-5.4 1.9-6 6-.6-4.1-1.9-5.4-6-6 4.1-.6 5.4-1.9 6-6Z"/></svg></span>
           <h3 class="service-card__title">Deep clean</h3>
           <p class="service-card__text">Baseboards, grout, inside appliances. The reset button for a home.</p>
           <div class="service-card__price">From $249</div>
         </article>
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">📦</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8 12 4l8 4v8l-8 4-8-4Z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg></span>
           <h3 class="service-card__title">Move in / move out</h3>
           <p class="service-card__text">Empty-place cleans built to pass a landlord's inspection.</p>
           <div class="service-card__price">From $329</div>
         </article>
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">🏢</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5.5" y="4" width="13" height="16" rx="1"/><path d="M9 8h1.5M13.5 8H15M9 12h1.5M13.5 12H15M10 20v-3h4v3"/></svg></span>
           <h3 class="service-card__title">Office &amp; commercial</h3>
           <p class="service-card__text">Evening and weekend service for studios, clinics and small offices.</p>
           <div class="service-card__price">Custom quote</div>
         </article>
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">🔑</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="9" r="3.5"/><path d="M11 11.5 19 19.5M15.5 16l2.2-2.2M17.5 18l1.6-1.6"/></svg></span>
           <h3 class="service-card__title">Airbnb turnover</h3>
           <p class="service-card__text">Same-day turns with linen changes and a restock checklist.</p>
           <div class="service-card__price">From $89</div>
         </article>
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">🛋️</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/><path d="M4 11h16v6H4zM6.5 17v2M17.5 17v2"/></svg></span>
           <h3 class="service-card__title">Carpet &amp; upholstery</h3>
           <p class="service-card__text">Hot-water extraction for rugs, carpets, sofas and mattresses.</p>
           <div class="service-card__price">From $129</div>
         </article>
         <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true">🪟</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M12 4v16M5 12h14"/></svg></span>
           <h3 class="service-card__title">Window cleaning</h3>
           <p class="service-card__text">Interior and exterior glass, tracks and sills, streak-free.</p>
           <div class="service-card__price">From $109</div>
         </article>
         <a class="service-card service-card--dark" href="#/book">
-          <div class="service-card__icon" aria-hidden="true">🐝</div>
+          <span class="hex-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21 4 16.5v-9Z"/></svg></span>
           <h3 class="service-card__title">Not sure which?</h3>
           <p class="service-card__text">Answer six quick questions and we'll price it for you in under a minute.</p>
         </a>
@@ -173,7 +188,7 @@
     <section class="band-dark">
       <div class="wrap section">
         <p class="eyebrow eyebrow--gold"><span class="eyebrow__hex" aria-hidden="true"></span>The process</p>
-        <h2 class="h2 h2--on-dark">How it <em>works</em></h2>
+        <h2 class="h2 h2--on-dark">How it works</h2>
         <ol class="steps">
           <li class="step">
             <div class="step__num" aria-hidden="true">1</div>
@@ -196,7 +211,7 @@
 
     <section class="wrap section">
       <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>The proof</p>
-      <h2 class="h2">Before and <em>after</em></h2>
+      <h2 class="h2">Before and after</h2>
       <p class="section__lede">Real jobs from the last month, photographed by the crew that did them.</p>
       <div class="ba-grid">
         <figure class="ba-card">
@@ -231,18 +246,18 @@
     <section class="band-soft">
       <div class="wrap section">
         <div class="section__head section__head--baseline">
-          <h2 class="h2">What customers <em>say</em></h2>
-          <span class="section__aside">4.9 ★ · 1,284 reviews</span>
+          <h2 class="h2">What customers say</h2>
+          <span class="section__aside">4.8 ★ · 214 Google reviews</span>
         </div>
         <div class="quote-grid">
           <figure class="quote">
             <div class="stars">★★★★★</div>
-            <blockquote>They found dust I didn't know I owned. Third month of biweekly visits and the same two people every time, which I did not expect from a cleaning service.</blockquote>
+            <blockquote>We're three months into the biweekly plan and it's the same two people every time. Honestly the house is cleaner now than when I was doing it myself.</blockquote>
             <figcaption class="quote__by"><span class="avatar" style="--face:#F0DCA6" aria-hidden="true"></span><span><span class="quote__name">Marisol T.</span><span class="quote__meta">Biweekly, 3-bed house</span></span></figcaption>
           </figure>
           <figure class="quote">
             <div class="stars">★★★★★</div>
-            <blockquote>Booked a move-out clean at 9pm on a Sunday and they were there Tuesday morning. Landlord returned the deposit without a word.</blockquote>
+            <blockquote>Booked a move-out clean late on a Sunday night, half expecting no reply, and they showed up Tuesday. Got the whole deposit back.</blockquote>
             <figcaption class="quote__by"><span class="avatar" style="--face:#BFD9C6" aria-hidden="true"></span><span><span class="quote__name">Devin O.</span><span class="quote__meta">Move-out clean</span></span></figcaption>
           </figure>
           <figure class="quote">
@@ -257,7 +272,7 @@
     <section class="wrap section area">
       <div>
         <p class="eyebrow"><span class="eyebrow__hex" aria-hidden="true"></span>Service area</p>
-        <h2 class="h2">Where we <em>buzz</em></h2>
+        <h2 class="h2">Where we work</h2>
         <p class="section__lede">We cover Davis County end to end, plus a short hop into north Salt Lake City. Outside the hive? Send us your ZIP and we'll tell you honestly whether we can get there.</p>
         <ul class="zip-list">
           <li>84010</li><li>84014</li><li>84015</li><li>84025</li>
@@ -472,21 +487,21 @@
 
     <section class="band-soft">
       <div class="wrap stat-row">
-        <div class="stat"><div class="stat__num">1,284</div><div class="stat__label">cleans completed</div></div>
-        <div class="stat"><div class="stat__num">18</div><div class="stat__label">cleaners on payroll</div></div>
+        <div class="stat"><div class="stat__num">2,340</div><div class="stat__label">cleans completed</div></div>
+        <div class="stat"><div class="stat__num">9</div><div class="stat__label">cleaners on payroll</div></div>
         <div class="stat"><div class="stat__num">$24</div><div class="stat__label">starting hourly wage</div></div>
-        <div class="stat"><div class="stat__num">94%</div><div class="stat__label">customers still with us after a year</div></div>
+        <div class="stat"><div class="stat__num">88%</div><div class="stat__label">customers still with us after a year</div></div>
       </div>
     </section>
 
     <section class="wrap section">
-      <h2 class="h2 h2--md">Meet the <em>crew</em></h2>
+      <h2 class="h2 h2--md">Meet the crew</h2>
       <p class="section__lede">You'll be introduced to yours by name before the first visit.</p>
       <ul class="crew">
         <li class="crew__member">
           <figure class="photo photo--crew" data-label="Rosa"><img src="assets/img/crew-rosa.jpg" alt="Rosa Ibarra" loading="lazy" decoding="async"></figure>
           <div class="crew__name">Rosa Ibarra</div>
-          <div class="crew__role">Founder · 14 years cleaning</div>
+          <div class="crew__role">Founder · 11 years cleaning</div>
         </li>
         <li class="crew__member">
           <figure class="photo photo--crew" data-label="Dan"><img src="assets/img/crew-dan.jpg" alt="Dan Whitfield" loading="lazy" decoding="async"></figure>
@@ -509,17 +524,17 @@
     <section class="wrap section section--flush-top">
       <div class="promise-grid">
         <article class="promise">
-          <div class="promise__icon" aria-hidden="true">🛡️</div>
+          <span class="hex-icon hex-icon--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.2 3 7.4 7 9 4-1.6 7-4.8 7-9V6Z"/></svg></span>
           <h3 class="promise__title">Insured and bonded</h3>
           <p class="promise__text">$2M liability cover and a bond on every employee. Background checks run before anyone is hired.</p>
         </article>
         <article class="promise">
-          <div class="promise__icon" aria-hidden="true">🌿</div>
+          <span class="hex-icon hex-icon--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14Z"/><path d="M5 19 14.5 9.5"/></svg></span>
           <h3 class="promise__title">Products we'd use at home</h3>
           <p class="promise__text">Plant-based, fragrance-free by default, safe around kids, cats and dogs. Tell us if you need something specific.</p>
         </article>
         <article class="promise">
-          <div class="promise__icon" aria-hidden="true">↩️</div>
+          <span class="hex-icon hex-icon--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 9H14a5 5 0 1 1 0 10H9"/><path d="M4.5 9 8 5.5M4.5 9 8 12.5"/></svg></span>
           <h3 class="promise__title">The 24-hour guarantee</h3>
           <p class="promise__text">Not right? Flag it within a day and we return to redo it at no cost, or refund the visit outright.</p>
         </article>
@@ -533,7 +548,7 @@
 
       <!-- ── wizard ── -->
       <div id="book-form-view">
-        <h1 class="h1 h1--sm">Book your <em>clean</em></h1>
+        <h1 class="h1 h1--sm">Book your clean</h1>
         <p class="book__lede">Six questions, a real price, and a slot held for you. No card needed.</p>
 
         <ol class="progress" id="book-progress"></ol>
@@ -664,8 +679,8 @@
 
       <!-- ── confirmation ── -->
       <div class="booked" id="book-done-view" hidden>
-        <span class="booked__hex" aria-hidden="true">🐝</span>
-        <h1 class="h1 h1--sm">You're on the <em>schedule</em>.</h1>
+        <span class="booked__hex" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5 10 17.5 19 7"/></svg></span>
+        <h1 class="h1 h1--sm">You're on the schedule.</h1>
         <p class="booked__lede">We've held <span id="done-when">your slot</span> for you. Rosa or Dan will call within the hour to confirm the details and introduce your crew.</p>
         <dl class="booked__summary">
           <div><dt>Service</dt><dd id="done-type"></dd></div>
@@ -679,6 +694,18 @@
   </div>
 
   </main>
+
+  <!-- sticky booking bar, phones only, hidden on the booking page itself -->
+  <div class="mobile-bar" id="mobile-bar" hidden>
+    <div class="mobile-bar__spacer" aria-hidden="true"></div>
+    <div class="mobile-bar__inner">
+      <div class="mobile-bar__copy">
+        <div class="mobile-bar__title">Next slot: tomorrow, 10 AM</div>
+        <div class="mobile-bar__note">Free reschedule · no card needed</div>
+      </div>
+      <a class="btn btn--ink mobile-bar__cta" href="#/book">Book</a>
+    </div>
+  </div>
 
   <!-- ───────────────────────── footer ───────────────────────── -->
   <footer class="site-footer">

@@ -64,6 +64,7 @@
     page: 'home',
     step: 1,
     submitted: false,
+    menuOpen: false,
     zip: '',
     type: 'Recurring clean',
     beds: 2,
@@ -141,6 +142,7 @@
 
     document.title = titleFor(page);
     closeNav();
+    syncMobileBar();
 
     if (!opts.keepScroll) window.scrollTo(0, 0);
     if (page === 'book') renderBooking();
@@ -167,29 +169,53 @@
   }
 
   /* -------------------------------------------------------------------------
-     Mobile nav
+     Compact header + sticky booking bar
+
+     The design switches at 900px. CSS swaps the header controls on its own;
+     JS only needs `narrow` for the two things CSS can't express — the drawer's
+     open state, and the booking bar, which also depends on the current page.
      ---------------------------------------------------------------------- */
-  var navToggle = $('.nav-toggle');
-  var siteNav = $('#site-nav');
+  var narrowQuery = window.matchMedia('(max-width: 899px)');
+  var burger = $('#nav-burger');
+  var drawer = $('#nav-drawer');
+  var mobileBar = $('#mobile-bar');
+
+  function isNarrow() { return narrowQuery.matches; }
 
   function closeNav() {
-    if (!navToggle || !siteNav) return;
-    siteNav.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
+    if (!burger || !drawer) return;
+    state.menuOpen = false;
+    drawer.hidden = true;
+    burger.setAttribute('aria-expanded', 'false');
+    syncMobileBar();
   }
 
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
-      var open = siteNav.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', String(open));
+  /* Shown on phones, on every page except the booking flow itself, and never
+     underneath an open menu. */
+  function syncMobileBar() {
+    if (!mobileBar) return;
+    mobileBar.hidden = !(isNarrow() && state.page !== 'book' && !state.menuOpen);
+  }
+
+  if (burger && drawer) {
+    burger.addEventListener('click', function () {
+      state.menuOpen = !state.menuOpen;
+      drawer.hidden = !state.menuOpen;
+      burger.setAttribute('aria-expanded', String(state.menuOpen));
+      syncMobileBar();
     });
-    siteNav.addEventListener('click', function (e) {
+    drawer.addEventListener('click', function (e) {
       if (e.target.closest('a')) closeNav();
     });
   }
 
+  // Crossing the breakpoint closes the menu, matching the design's resize rule.
+  var onBreakpoint = function () { closeNav(); };
+  if (narrowQuery.addEventListener) narrowQuery.addEventListener('change', onBreakpoint);
+  else narrowQuery.addListener(onBreakpoint);
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeNav();
+    if (e.key === 'Escape' && state.menuOpen) { closeNav(); burger.focus(); }
   });
 
   /* -------------------------------------------------------------------------

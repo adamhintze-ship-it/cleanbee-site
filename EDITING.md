@@ -109,7 +109,7 @@ And this will break the page:
 - **`&`** — write it as `&amp;`. You'll see this already in "Office &amp; commercial".
 - **`<` and `>`** — avoid typing these in your text. They start and end tags.
 
-Apostrophes, accents, quotes and emoji are all fine to type normally.
+Apostrophes, accents and quotes are all fine to type normally.
 
 ---
 
@@ -124,10 +124,12 @@ Open `index.html` and search for the text in the middle column.
 | Opening hours | `Mon–Fri` | In the footer. |
 | Licence number | `CB-40218` | In the footer. |
 | Copyright year | `© 2026` | In the footer. |
-| Star rating / review count | `1,284` | Appears on the home page **and** the About page. |
+| Star rating / review count | `4.8 on Google` | Also `4.8 ★ · 214 Google reviews` above the reviews. |
+| The "cleans completed" figures | `2,340` | On the About page, alongside `9`, `$24` and `88%`. |
+| Sticky bar on phones | `Next slot: tomorrow` | The bar pinned to the bottom of the screen on mobile. |
 | The "from" prices on cards | `From $119` | These are display text only — see the next section for the calculator. |
 | Service area towns | `Layton` | The honeycomb tiles on the home page. |
-| Customer reviews | `They found dust` | Three reviews, each with a name and a caption below it. |
+| Customer reviews | `three months into` | Three reviews, each with a name and a caption below it. |
 | Crew names and roles | `Rosa Ibarra` | Four of them on the About page. |
 | The About story | `Clean Bee began in Kaysville` | Two paragraphs. |
 
@@ -265,10 +267,15 @@ Rough guide to how much care each file needs.
 | `index.html` | All page wording | **Some.** Only edit between `>` and `<`. |
 | `assets/js/app.js` | Prices, ZIPs, booking form | **Care.** Numbers and quoted text only. |
 | `assets/css/styles.css` | Colours, spacing, fonts | Ask a developer. |
+| Icons (the little line drawings) | Drawn in code, not images | Ask a developer. |
 | `vercel.json` | Hosting settings | Leave alone. |
 
 Changing colours or layout is a developer job — it's easy to make the site look
 broken on phones without realising, since you'd be testing on a desktop.
+
+The small icons on the service cards and the trust strip are drawn in code
+(SVG), not photos, so they stay crisp at any size and match the honeycomb
+theme. Swapping one for a different symbol is a developer job too.
 
 ---
 
